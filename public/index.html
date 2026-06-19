@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WA KPPN Pekalongan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Poppins:wght@600&amp;display=swap');
+        
+        body { font-family: 'Inter', system_ui, sans-serif; }
+        .title-font { font-family: 'Poppins', system_ui, sans-serif; font-weight: 600; }
+        
+        .sidebar {
+            background: #ffffff;
+            border-right: 1px solid #e2e8f0;
+            overflow-y: auto;
+            max-height: 100vh;
+        }
+        
+        .dark .sidebar {
+            background: #0f172a;
+            border-right: 1px solid #334155;
+        }
+        
+        .nav-item {
+            transition: all 0.2s ease;
+            border-radius: 12px;
+        }
+        
+        .nav-item:hover {
+            background-color: #f1f5f9;
+        }
+        
+        .dark .nav-item:hover {
+            background-color: #1e293b;
+        }
+        
+        .nav-active {
+            background-color: #10b981;
+            color: white !important;
+            font-weight: 600;
+        }
+        
+        .modern-card {
+            transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            border-radius: 20px;
+        }
+        
+        .dark .modern-card {
+            background-color: #0f172a;
+            border: 1px solid #334155;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.3);
+        }
+        
+        .section-header {
+            font-size: 1.15rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+        }
+        
+        .count-badge {
+            background-color: #10b981;
+            color: white;
+            font-size: 0.65rem;
+            padding: 1px 8px;
+            border-radius: 9999px;
+            min-width: 20px;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .example-box {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+        }
+        
+        .dark .example-box {
+            background-color: #14532d;
+            border: 1px solid #4ade80;
+        }
+        
+        .dark {
+            color-scheme: dark;
+        }
+        
+        .dark .bg-white {
+            background-color: #0f172a !important;
+        }
+        
+        .dark .bg-slate-100 {
+            background-color: #0f172a !important;
+        }
+        
+        .dark .border-slate-200 {
+            border-color: #334155 !important;
+        }
+        
+        .dark .text-slate-900 {
+            color: #f1f5f9 !important;
+        }
+        
+        .dark .text-slate-600 {
+            color: #94a3b8 !important;
+        }
+        
+        .dark .text-emerald-600 {
+            color: #4ade80 !important;
+        }
+        
+        .toast {
+            animation: slideIn 0.3s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        .stat-card {
+            transition: transform 0.2s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-4px);
+        }
+        
+        .menu-group {
+            margin-bottom: 8px;
+        }
+        
+        .menu-group-title {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #64748b;
+            padding: 0 16px;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .dark .menu-group-title {
+            color: #64748b;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 dark:bg-slate-950 text-slate-900 dark:text-slate-100">
+    
+    <div class="flex h-screen overflow-hidden">
+        
+        <!-- SIDEBAR -->
+        <div class="w-72 sidebar flex flex-col flex-shrink-0">
+            
+            <!-- Logo -->
+            <div class="px-8 py-8 border-b border-slate-200 dark:border-slate-800">
+                <div class="flex items-center gap-x-4">
+                    <div class="w-14 h-14 bg-emerald-500 flex items-center justify-center rounded-3xl shadow-xl">
+                        <i class="fa-brands fa-whatsapp text-white text-4xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="title-font text-3xl font-bold tracking-tighter">WA KPPN</h1>
+                        <p class="text-emerald-600 text-sm font-medium -mt-1">Pekalongan</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Navigation -->
+            <div class="flex-1 px-4 py-6 text-sm overflow-y-auto">
+                
+                <!-- MENU UTAMA -->
+                <div class="menu-group">
+                    <div class="menu-group-title">Menu Utama</div>
+                    
+                    <div onclick="showSection('dashboard')" class="nav-item nav-active flex items-center gap-x-3 px-4 py-3 cursor-pointer">
+                        <i class="fa-solid fa-home w-5"></i>
+                        <span>Dashboard</span>
+                    </div>
+                    
+                    <div onclick="showSection('whatsapp')" class="nav-item flex items-center gap-x-3 px-4 py-3 cursor-pointer">
+                        <i class="fa-brands fa-whatsapp w-5"></i>
+                        <span>Koneksi WhatsApp</span>
+                    </div>
+                </div>
+                
+                <!-- DATA -->
+                <div class="menu-group">
+                    <div class="menu-group-title">Data</div>
+                    
+                    <div onclick="showSection('kontak')" class="nav-item flex items-center gap-x-3 px-4 py-3 cursor-pointer">
+                        <i class="fa-solid fa-users w-5"></i>
+                        <span>Data Kontak &amp; Grup</span>
+                    </div>
+                    
+                    <div onclick="showSection('konsep')" class="nav-item flex items-center gap-x-3 px-4 py-3 cursor-pointer">
+                        <i class="fa-solid fa-edit w-5"></i>
+                        <span>Konsep Pesan</span>
+                    </div>
+                </div>
+                
+                <!-- KIRIM PESAN -->
+                <div class="menu-group">
+                    <div class="menu-group-title">Kirim Pesan</div>
+                    
+                    <div onclick="showSection('manual-single')" class="nav-item flex items-center gap-x-3 px-4 py-3 cursor-pointer">
+                        <i class="fa-solid fa-user w-5"></i>
+                        <span>Kirim Single</span>
+                    </div>
+                    
+                    <div onclick="showSection('manual-blast')" class="nav-item flex items-center gap-x-3 px-4 py-3 cursor-pointer">
+                        <i class="fa-solid fa-users w-5"></i>
+                        <span>Blast Massal</span>
+                    </div>
+                </div>
+                
+                <!-- OTOMATISASI -->
+                <div class="menu-group">
+                    <div class="menu-group-title">Otomatisasi</div>
+                    
+                    <div onclick="showSection('jadwal')" class="nav-item flex items-center gap-x-3 px-4 py-3 cursor-pointer">
+                        <i class="fa-solid fa-clock w-5"></i>
+                        <span>Jadwal Pengiriman</span>
+                    </div>
+                    
+                    <div onclick="showSection('pengingat')" class="nav-item flex items-center gap-x-3 px-4 py-3 cursor-pointer">
+                        <i class="fa-solid fa-bell w-5"></i>
+                        <span>Pengingat</span>
+                    </div>
+                </div>
+                
+                <!-- MANAJEMEN -->
+                <div class="menu-group">
+                    <div class="menu-group-title">Manajemen</div>
+                    
+                    <div onclick="showSection('manajemen-konsep')" class="nav-item flex items-center justify-between px-4 py-2.5 cursor-pointer">
+                        <div class="flex items-center gap-x-3">
+                            <i class="fa-solid fa-edit w-4"></i>
+                            <span>Konsep</span>
+                        </div>
+                        <span id="count-konsep" class="count-badge">0</span>
+                    </div>
+                    
+                    <div onclick="showSection('manajemen-keluar')" class="nav-item flex items-center justify-between px-4 py-2.5 cursor-pointer">
+                        <div class="flex items-center gap-x-3">
+                            <i class="fa-solid fa-paper-plane w-4"></i>
+                            <span>Kotak Keluar</span>
+                        </div>
+                        <span id="count-keluar" class="count-badge">0</span>
+                    </div>
+                    
+                    <div onclick="showSection('manajemen-masuk')" class="nav-item flex items-center justify-between px-4 py-2.5 cursor-pointer">
+                        <div class="flex items-center gap-x-3">
+                            <i class="fa-solid fa-inbox w-4"></i>
+                            <span>Kotak Masuk</span>
+                        </div>
+                        <span id="count-masuk" class="count-badge">0</span>
+                    </div>
+                    
+                    <div onclick="showSection('manajemen-gagal')" class="nav-item flex items-center justify-between px-4 py-2.5 cursor-pointer">
+                        <div class="flex items-center gap-x-3">
+                            <i class="fa-solid fa-exclamation-triangle w-4"></i>
+                            <span>Gagal Kirim</span>
+                        </div>
+                        <span id="count-gagal" class="count-badge">0</span>
+                    </div>
+                </div>
+                
+            </div>
+            
+        </div>
+        
+        <!-- MAIN CONTENT -->
+        <div class="flex-1 flex flex-col overflow-hidden">
+            
+            <!-- Topbar -->
+            <div class="h-20 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-8 flex items-center justify-between">
+                <h2 id="page-title" class="text-2xl font-bold tracking-tight">Dashboard</h2>
+                
+                <div class="flex items-center gap-x-4">
+                    <!-- Theme Toggle -->
+                    <div class="flex items-center bg-slate-100 dark:bg-slate-800 rounded-3xl p-1">
+                        <button onclick="setTheme('light')" id="light-btn" class="px-5 py-2 text-sm flex items-center gap-x-2 rounded-3xl font-medium">
+                            <i class="fa-solid fa-sun text-amber-500"></i>
+                            <span class="hidden md:block">Light</span>
+                        </button>
+                        <button onclick="setTheme('dark')" id="dark-btn" class="px-5 py-2 text-sm flex items-center gap-x-2 rounded-3xl font-medium bg-white dark:bg-slate-700 shadow">
+                            <i class="fa-solid fa-moon text-indigo-400"></i>
+                            <span class="hidden md:block">Dark</span>
+                        </button>
+                    </div>
+                    
+                    <div id="connection-status" class="px-4 py-2 text-sm font-semibold rounded-3xl flex items-center gap-x-2 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400 border border-yellow-200">
+                        <i class="fa-solid fa-circle text-xs"></i>
+                        <span>Disconnected</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Content -->
+            <div class="flex-1 overflow-auto p-8">
+                
+                <!-- DASHBOARD -->
+                <div id="section-dashboard">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                        <div class="modern-card bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 stat-card">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <div class="text-emerald-600 text-sm font-semibold">Total Kontak</div>
+                                    <div class="text-5xl font-bold mt-2" id="stat-kontak">0</div>
+                                </div>
+                                <i class="fa-solid fa-users text-4xl text-emerald-500 opacity-80"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="modern-card bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 stat-card">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <div class="text-emerald-600 text-sm font-semibold">Total Grup</div>
+                                    <div class="text-5xl font-bold mt-2" id="stat-grup">3</div>
+                                </div>
+                                <i class="fa-solid fa-layer-group text-4xl text-emerald-500 opacity-80"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="modern-card bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 stat-card">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <div class="text-emerald-600 text-sm font-semibold">Konsep Tersimpan</div>
+                                    <div class="text-5xl font-bold mt-2" id="stat-konsep">0</div>
+                                </div>
+                                <i class="fa-solid fa-edit text-4xl text-emerald-500 opacity-80"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="modern-card bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 stat-card">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <div class="text-emerald-600 text-sm font-semibold">Pesan Terkirim</div>
+                                    <div class="text-5xl font-bold mt-2" id="stat-terkirim">0</div>
+                                </div>
+                                <i class="fa-solid fa-paper-plane text-4xl text-emerald-500 opacity-80"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div class="modern-card bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6">
+                            <h4 class="font-bold mb-4 flex items-center gap-x-2">
+                                <i class="fa-solid fa-edit text-emerald-500"></i>
+                                <span>Konsep Tersimpan</span>
+                            </h4>
+                            <div id="dash-konsep" class="max-h-[180px] overflow-auto text-sm"></div>
+                        </div>
+                        
+                        <div class="modern-card bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6">
+                            <h4 class="font-bold mb-4 flex items-center gap-x-2">
+                                <i class="fa-solid fa-paper-plane text-emerald-500"></i>
+                                <span>Kotak Keluar</span>
+                            </h4>
+                            <div id="dash-keluar" class="max-h-[180px] overflow-auto text-sm"></div>
+                        </div>
+                        
+                        <div class="modern-card bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6">
+                            <h4 class="font-bold mb-4 flex items-center gap-x-2">
+                                <i class="fa-solid fa-inbox text-emerald-500"></i>
+                                <span>Kotak Masuk</span>
+                            </h4>
+                            <div id="dash-masuk" class="max-h-[180px] overflow-auto text-sm"></div>
+                        </div>
+                        
+                        <div class="modern-card bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6">
+                            <h4 class="font-bold mb-4 flex items-center gap-x-2">
+                                <i class="fa-solid fa-exclamation-triangle text-emerald-500"></i>
+                                <span>Gagal Kirim</span>
+                            </h4>
+                            <div id="dash-gagal" class="max-h-[180px] overflow-auto text-sm"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- KONEKSI WHATSAPP -->
+                <div id="section-whatsapp" class="hidden">
+                    <div class="modern-card bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-8 max-w-lg">
+                        <h3 class="section-header mb-6">Koneksi WhatsApp</h3>
+                        <div class="space-y-4">
+                            <button onclick="connectWhatsApp()" class="w-full py-4 bg-emerald-500 hover:bg-emerald-600 text-white rounded-2xl font-bold flex items-center justify-center gap-x-3 transition-colors">
+                                <i class="fa-solid fa-qrcode text-2xl"></i>
+                                <span>SCAN QR CODE</span>
+                            </button>
+                            <button onclick="disconnectWhatsApp()" class="w-full py-4 bg-red-500 hover:bg-red-600 text-white rounded-2xl font-bold flex items-center justify-center gap-x-3 transition-colors">
+                                <i class="fa-solid fa-plug-circle-xmark text-2xl"></i>
+                                <span>DISCONNECT</span>
+                            </button>
+                        </div>
+                        <div id="qr-display" class="mt-6 hidden">
+                            <div class="flex justify-center">
+                                <img id="qr-image" class="w-64 h-64 border-2 border-emerald-200 rounded-3xl" alt="QR Code">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- DATA KONTAK -->
+                <div id="section-kontak" class="hidden">
+                    <div class="modern-card bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-8">
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="section-header">Data Kontak</h3>
+                            <div class="flex gap-3">
+                                <button onclick="downloadExampleExcel()" class="px-5 py-2.5 bg-emerald-100 text-emerald-700 rounded-2xl text-sm font-semibold flex items-center gap-x-2">
+                                    <i class="fa-solid fa-download"></i> <span>Contoh Excel</span>
+                                </button>
+                                <button onclick="exportKontakToExcel()" class="px-5 py-2.5 bg-blue-500 text-white rounded-2xl text-sm font-semibold flex items-center gap-x-2">
+                                    <i class="fa-solid fa-file-excel"></i> <span>Export Excel</span>
+                                </button>
+                                <label class="px-5 py-2.5 bg-emerald-500 text-white rounded-2xl text-sm font-semibold flex items-center gap-x-2 cursor-pointer">
+                                    <i class="fa-solid fa-upload"></i> <span>Upload Excel</span>
+                                    <input type="file" id="csv-upload" accept=".xlsx,.xls,.csv" class="hidden" onchange="uploadCSV(event)">
+                                </label>
+                                <label class="px-5 py-2.5 bg-purple-500 text-white rounded-2xl text-sm font-semibold flex items-center gap-x-2 cursor-pointer">
+                                    <i class="fa-solid fa-upload"></i> <span>Restore</span>
+                                    <input type="file" id="restore-kontak" accept=".json" class="hidden" onchange="restoreKontakFromBackup(event)">
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-5">
+                            <div class="flex gap-3">
+                                <input type="text" id="new-group-name" placeholder="Nama Grup Baru" class="flex-1 px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-2xl">
+                                <button onclick="createNewGroup()" class="px-8 py-3 bg-emerald-500 text-white rounded-2xl font-semibold">Buat Grup</button>
+                            </div>
+                        </div>
+                        
+                        <div class="overflow-auto max-h-[420px]">
+                            <table class="w-full">
+                                <thead class="bg-slate-100 dark:bg-slate-700">
+                                    <tr>
+                                        <th class="px-4 py-3 text-left">Nomor</th>
+                                        <th class="px-4 py-3 text-left">Nama</th>
+                                        <th class="px-4 py-3 text-left">Grup</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="contact-body" class="divide-y"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- KONSEP PESAN -->
+                <div id="section-konsep" class="hidden">
+                    <div class="modern-card bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-8 max-w-3xl">
+                        <h3 class="section-header mb-6">Buat Konsep Baru</h3>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="text-sm font-semibold">Nama Konsep</label>
+                                <input type="text" id="konsep-nama" class="w-full mt-1 px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-2xl">
+                            </div>
+                            <div>
+                                <label class="text-sm font-semibold">Pilih Grup Tujuan</label>
+                                <select id="konsep-grup" class="w-full mt-1 px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-2xl"></select>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <label class="text-sm font-semibold">Isi Pesan</label>
+                            
+                            <div class="mb-2">
+                                <textarea id="konsep-isi" rows="5" class="w-full px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-2xl" placeholder="Tulis pesan di sini...&#10;&#10;Contoh:&#10;Halo {x2},&#10;Selamat datang di KPPN Pekalongan.&#10;Nomor: {x1}&#10;Jabatan: {x3}"></textarea>
+                            </div>
+                            
+                            <div class="text-xs text-slate-500">
+                                Gunakan variabel: <span class="font-mono text-emerald-600">{x1}</span> (Nomor), <span class="font-mono text-emerald-600">{x2}</span> (Nama), <span class="font-mono text-emerald-600">{x3}</span> (Jabatan), dst.
+                            </div>
+                        </div>
+                        
+                        <button onclick="saveKonsep()" class="mt-5 px-8 py-3.5 bg-emerald-500 text-white rounded-2xl font-semibold">Simpan Konsep</button>
+                    </div>
+                </div>
+                
+                <!-- KIRIM SINGLE -->
+                <div id="section-manual-single" class="hidden">
+                    <div class="modern-card bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-8 max-w-lg">
+                        <h3 class="section-header mb-6 flex items-center gap-x-3">
+                            <i class="fa-solid fa-user text-emerald-500"></i>
+                            <span>Kirim Single</span>
+                        </h3>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <label class="text-sm font-semibold">Nomor Tujuan</label>
+                                <input type="text" id="single-number" class="w-full mt-1 px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-2xl" placeholder="6281234567890">
+                            </div>
+                            <div>
+                                <label class="text-sm font-semibold">Pesan</label>
+                                <textarea id="single-message" rows="5" class="w-full mt-1 px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-2xl"></textarea>
+                            </div>
+                        </div>
+                        
+                        <button onclick="sendSingleMessage()" class="mt-6 w-full py-3.5 bg-emerald-500 text-white rounded-2xl font-semibold flex items-center justify-center gap-x-3">
+                            <i class="fa-brands fa-whatsapp"></i>
+                            <span>Kirim Sekarang</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- BLAST MASSAL -->
+                <div id="section-manual-blast" class="hidden">
+                    <div class="modern-card bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-8 max-w-lg">
+                        <h3 class="section-header mb-6 flex items-center gap-x-3">
+                            <i class="fa-solid fa-users text-emerald-500"></i>
+                            <span>Blast Massal</span>
+                        </h3>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <label class="text-sm font-semibold">Pilih Konsep</label>
+                                <select id="blast-konsep" class="w-full mt-1 px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-2xl"></select>
+                            </div>
+                            
+                            <div class="p-4 bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-800 rounded-2xl">
+                                <div class="font-semibold text-emerald-700 dark:text-emerald-400 mb-2">Blast Settings</div>
+                                <div class="grid grid-cols-2 gap-3">
+                                    <div>
+                                        <label class="text-xs text-emerald-600">Kirim per batch</label>
+                                        <input type="number" id="blast-batch" value="8" class="w-full mt-1 px-3 py-2 border border-emerald-200 dark:border-emerald-800 bg-white dark:bg-slate-800 rounded-xl text-sm">
+                                    </div>
+                                    <div>
+                                        <label class="text-xs text-emerald-600">Delay (detik)</label>
+                                        <input type="number" id="blast-delay" value="45" class="w-full mt-1 px-3 py-2 border border-emerald-200 dark:border-emerald-800 bg-white dark:bg-slate-800 rounded-xl text-sm">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button onclick="startBlastMassal()" class="mt-6 w-full py-4 bg-emerald-600 text-white rounded-2xl font-bold flex items-center justify-center gap-x-3">
+                            <i class="fa-brands fa-whatsapp text-2xl"></i>
+                            <span>MULAI BLAST</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- JADWAL PENGIRIMAN -->
+                <div id="section-jadwal" class="hidden">
+                    <div class="modern-card bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-8">
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="section-header">Jadwal Pengiriman</h3>
+                            <button onclick="showScheduleModal()" class="px-5 py-2.5 bg-emerald-500 text-white rounded-2xl text-sm font-semibold">+ Buat Jadwal</button>
+                        </div>
+                        <div id="schedule-list"></div>
+                    </div>
+                </div>
+                
+                <!-- PENGINGAT -->
+                <div id="section-pengingat" class="hidden">
+                    <div class="modern-card bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-8">
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="section-header">Pengingat</h3>
+                            <button onclick="showReminderModal()" class="px-5 py-2.5 bg-emerald-500 text-white rounded-2xl text-sm font-semibold">+ Buat Pengingat</button>
+                        </div>
+                        <div id="reminder-list"></div>
+                    </div>
+                </div>
+                
+                <!-- MANAJEMEN PESAN -->
+                <div id="section-manajemen-konsep" class="hidden">
+                    <div class="modern-card bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-8">
+                        <h3 class="section-header mb-6">Konsep Pesan</h3>
+                        <div id="manajemen-konsep-content"></div>
+                    </div>
+                </div>
+                
+                <div id="section-manajemen-keluar" class="hidden">
+                    <div class="modern-card bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-8">
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="section-header">Kotak Keluar</h3>
+                            <div class="flex gap-3">
+                                <button onclick="exportKotakKeluarToExcel()" class="px-4 py-2 bg-blue-500 text-white rounded-2xl text-sm font-semibold flex items-center gap-x-2">
+                                    <i class="fa-solid fa-file-excel"></i> <span>Export Excel</span>
+                                </button>
+                                <button onclick="printKotakKeluarToPDF()" class="px-4 py-2 bg-red-500 text-white rounded-2xl text-sm font-semibold flex items-center gap-x-2">
+                                    <i class="fa-solid fa-file-pdf"></i> <span>Cetak PDF</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div id="manajemen-keluar-content"></div>
+                    </div>
+                </div>
+                
+                <div id="section-manajemen-masuk" class="hidden">
+                    <div class="modern-card bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-8">
+                        <h3 class="section-header mb-6">Kotak Masuk</h3>
+                        <div id="manajemen-masuk-content"></div>
+                    </div>
+                </div>
+                
+                <div id="section-manajemen-gagal" class="hidden">
+                    <div class="modern-card bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-8">
+                        <h3 class="section-header mb-6">Gagal Kirim</h3>
+                        <div id="manajemen-gagal-content"></div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let contacts = [];
+        let groups = { "Group 1": [], "Group 2": [], "Group 3": [] };
+        let konsepList = [];
+        let messageLogs = [];
+        let reminderList = [];
+        let currentTheme = localStorage.getItem('theme') || 'light';
+
+        // ================== TOAST NOTIFICATION ==================
+        function showToast(message, type = 'success') {
+            const toastContainer = document.getElementById('toast-container') || createToastContainer();
+            
+            const toast = document.createElement('div');
+            toast.className = `toast flex items-center gap-x-3 px-4 py-3 rounded-2xl shadow-lg mb-2 ${type === 'success' ? 'bg-emerald-500 text-white' : 'bg-red-500 text-white'}`;
+            toast.innerHTML = `
+                <i class="fa-solid ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
+                <span>${message}</span>
+            `;
+            
+            toastContainer.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        function createToastContainer() {
+            const container = document.createElement('div');
+            container.id = 'toast-container';
+            container.className = 'fixed bottom-5 right-5 z-50 flex flex-col items-end';
+            document.body.appendChild(container);
+            return container;
+        }
+
+        function showSection(section) {
+            document.querySelectorAll('[id^="section-"]').forEach(el => el.classList.add('hidden'));
+            document.getElementById('section-' + section).classList.remove('hidden');
+            document.getElementById('page-title').innerText = section.charAt(0).toUpperCase() + section.slice(1);
+            
+            if (section === 'kontak') renderContacts();
+            if (section === 'konsep') renderKonsepGrupSelect();
+            if (section === 'manual-blast') renderBlastKonsepSelect();
+            if (section === 'jadwal') loadSchedules();
+            if (section === 'pengingat') loadReminders();
+            updateCounts();
+        }
+
+        // ================== THEME ==================
+        function setTheme(theme) {
+            currentTheme = theme;
+            
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            }
+            
+            updateThemeButtons();
+        }
+
+        function updateThemeButtons() {
+            const lightBtn = document.getElementById('light-btn');
+            const darkBtn = document.getElementById('dark-btn');
+            if (!lightBtn || !darkBtn) return;
+
+            lightBtn.classList.remove('bg-white', 'shadow');
+            darkBtn.classList.remove('bg-white', 'dark:bg-slate-700', 'shadow');
+
+            if (currentTheme === 'dark') {
+                darkBtn.classList.add('bg-white', 'dark:bg-slate-700', 'shadow');
+            } else {
+                lightBtn.classList.add('bg-white', 'shadow');
+            }
+        }
+
+        function initTheme() {
+            if (currentTheme === 'dark') {
+                document.documentElement.classList.add('dark');
+            }
+            setTimeout(updateThemeButtons, 150);
+        }
+
+        function updateCounts() {
+            document.getElementById('count-konsep').innerText = konsepList.length;
+            document.getElementById('count-keluar').innerText = messageLogs.filter(l => l.status === 'sent').length;
+            document.getElementById('count-masuk').innerText = messageLogs.filter(l => l.status === 'received').length;
+            document.getElementById('count-gagal').innerText = messageLogs.filter(l => l.status === 'failed').length;
+        }
+
+        // ================== WHATSAPP ==================
+        async function connectWhatsApp() {
+            const statusEl = document.getElementById('connection-status');
+            statusEl.innerHTML = `<i class="fa-solid fa-circle text-yellow-500"></i> <span>Connecting...</span>`;
+            
+            await fetch('/api/connect', { method: 'POST' });
+            
+            const interval = setInterval(async () => {
+                const res = await fetch('/api/qr');
+                const data = await res.json();
+                
+                if (data.connected) {
+                    clearInterval(interval);
+                    statusEl.innerHTML = `<i class="fa-solid fa-circle text-emerald-500"></i> <span>Connected</span>`;
+                    statusEl.className = 'px-4 py-2 text-sm font-semibold rounded-3xl flex items-center gap-x-2 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 border border-emerald-200';
+                    showToast('WhatsApp berhasil terhubung!', 'success');
+                } else if (data.qr) {
+                    document.getElementById('qr-display').classList.remove('hidden');
+                    document.getElementById('qr-image').src = data.qr;
+                }
+            }, 1200);
+        }
+
+        async function disconnectWhatsApp() {
+            await fetch('/api/disconnect', { method: 'POST' });
+            location.reload();
+        }
+
+        // ================== DATA KONTAK (EXCEL) ==================
+        function uploadCSV(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const lines = e.target.result.trim().split('\n');
+                contacts = [];
+                
+                lines.forEach((line, index) => {
+                    if (index === 0) return;
+                    const values = line.split(',').map(v => v.trim());
+                    if (values.length < 2) return;
+                    
+                    contacts.push({
+                        x1: values[0] || '', x2: values[1] || '', x3: values[2] || '',
+                        x4: values[3] || '', x5: values[4] || '', x6: values[5] || '',
+                        x7: values[6] || '', x8: values[7] || '', x9: values[8] || '',
+                        x10: values[9] || '', selected: true, group: 'Group 1'
+                    });
+                });
+                
+                renderContacts();
+                document.getElementById('stat-kontak').innerText = contacts.length;
+                showToast(`${contacts.length} kontak berhasil dimuat`, 'success');
+            };
+            reader.readAsText(file);
+        }
+
+        function renderContacts() {
+            const tbody = document.getElementById('contact-body');
+            tbody.innerHTML = '';
+            
+            contacts.forEach((c, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td class="px-4 py-3 font-mono">${c.x1}</td>
+                    <td class="px-4 py-3 font-semibold">${c.x2}</td>
+                    <td class="px-4 py-3">
+                        <select onchange="changeContactGroup(${index}, this.value)" class="px-3 py-1 border rounded-xl text-sm">
+                            ${Object.keys(groups).map(g => `<option value="${g}" ${c.group === g ? 'selected' : ''}>${g}</option>`).join('')}
+                        </select>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        function changeContactGroup(index, newGroup) {
+            contacts[index].group = newGroup;
+        }
+
+        function createNewGroup() {
+            const name = document.getElementById('new-group-name').value.trim();
+            if (!name) return showToast('Nama grup tidak boleh kosong', 'error');
+            groups[name] = [];
+            showToast('Grup berhasil dibuat!', 'success');
+            document.getElementById('new-group-name').value = '';
+            renderContacts();
+        }
+
+        function downloadExampleExcel() {
+            const csv = `x1,x2,x3,x4,x5,x6,x7,x8,x9,x10\n6281234567890,Budi Santoso,Manager,Divisi Keuangan,2024,Aktif,Pekalongan,Jawa Tengah,081234567890,budi@email.com\n6289876543210,Siti Aminah,Staff,Divisi Umum,2023,Aktif,Pemalang,Jawa Tengah,089876543210,siti@email.com`;
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url; a.download = 'contoh_kontak_kppn.csv'; a.click();
+            showToast('Contoh file berhasil diunduh', 'success');
+        }
+
+        function exportKontakToExcel() {
+            if (contacts.length === 0) {
+                showToast('Tidak ada data kontak untuk diexport', 'error');
+                return;
+            }
+
+            const excelData = contacts.map(c => ({
+                'Nomor (x1)': c.x1,
+                'Nama (x2)': c.x2,
+                'Jabatan (x3)': c.x3,
+                'x4': c.x4,
+                'x5': c.x5,
+                'x6': c.x6,
+                'x7': c.x7,
+                'x8': c.x8,
+                'x9': c.x9,
+                'x10': c.x10,
+                'Grup': c.group || 'Group 1'
+            }));
+
+            const ws = XLSX.utils.json_to_sheet(excelData);
+            const wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, ws, "Data Kontak");
+
+            XLSX.writeFile(wb, "data_kontak_kppn.xlsx");
+            showToast('Data kontak berhasil diexport ke Excel', 'success');
+        }
+
+        function restoreKontakFromBackup(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const data = JSON.parse(e.target.result);
+                    
+                    if (data.kontak) {
+                        contacts = data.kontak;
+                        renderContacts();
+                        document.getElementById('stat-kontak').innerText = contacts.length;
+                        showToast('Data kontak berhasil di-restore!', 'success');
+                    } else {
+                        showToast('File backup tidak berisi data kontak', 'error');
+                    }
+                } catch (error) {
+                    showToast('File backup tidak valid', 'error');
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        // ================== KONSEP ==================
+        function renderKonsepGrupSelect() {
+            const select = document.getElementById('konsep-grup');
+            select.innerHTML = Object.keys(groups).map(g => `<option value="${g}">${g}</option>`).join('');
+        }
+
+        function saveKonsep() {
+            const nama = document.getElementById('konsep-nama').value.trim();
+            const grup = document.getElementById('konsep-grup').value;
+            const isi = document.getElementById('konsep-isi').value.trim();
+            
+            if (!nama || !isi) {
+                showToast('Nama dan isi konsep harus diisi', 'error');
+                return;
+            }
+            
+            konsepList.push({ id: Date.now(), nama, grup, isi });
+            showToast('Konsep berhasil disimpan!', 'success');
+            document.getElementById('stat-konsep').innerText = konsepList.length;
+            updateCounts();
+        }
+
+        // ================== KIRIM SINGLE ==================
+        async function sendSingleMessage() {
+            const number = document.getElementById('single-number').value.trim();
+            const message = document.getElementById('single-message').value.trim();
+            
+            if (!number || !message) {
+                showToast('Nomor dan pesan harus diisi', 'error');
+                return;
+            }
+            
+            await fetch('/api/blast', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ contacts: [{ nomor: number, nama: 'Manual', selected: true }], template: message })
+            });
+            
+            showToast('Pesan berhasil dikirim!', 'success');
+        }
+
+        // ================== BLAST MASSAL ==================
+        function renderBlastKonsepSelect() {
+            const select = document.getElementById('blast-konsep');
+            select.innerHTML = konsepList.map(k => `<option value="${k.id}">${k.nama} → ${k.grup}</option>`).join('');
+        }
+
+        async function startBlastMassal() {
+            const konsepId = document.getElementById('blast-konsep').value;
+            const konsep = konsepList.find(k => k.id == konsepId);
+            if (!konsep) {
+                showToast('Pilih konsep terlebih dahulu', 'error');
+                return;
+            }
+            
+            const targetContacts = contacts.filter(c => c.group === konsep.grup);
+            if (targetContacts.length === 0) {
+                showToast('Tidak ada kontak di grup tersebut', 'error');
+                return;
+            }
+            
+            const batch = parseInt(document.getElementById('blast-batch').value) || 8;
+            const delay = parseInt(document.getElementById('blast-delay').value) || 45;
+            
+            const res = await fetch('/api/blast', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ 
+                    contacts: targetContacts, 
+                    template: konsep.isi,
+                    batch: batch,
+                    delay: delay
+                })
+            });
+            
+            const result = await res.json();
+            showToast(`Blast selesai! Berhasil: ${result.sent}, Gagal: ${result.failed}`, 'success');
+        }
+
+        // ================== JADWAL PENGIRIMAN ==================
+        function showScheduleModal() {
+            const modalHTML = `
+                <div id="schedule-modal" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
+                    <div class="bg-white dark:bg-slate-900 w-full max-w-md p-7 rounded-3xl border border-slate-200 dark:border-slate-700">
+                        <h3 class="font-bold text-xl mb-5">Buat Jadwal Pengiriman</h3>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <label class="text-sm font-semibold">Pilih Konsep</label>
+                                <select id="schedule-konsep" class="w-full mt-1 px-4 py-3 border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 rounded-2xl">
+                                    ${konsepList.map(k => `<option value="${k.id}">${k.nama} → ${k.grup}</option>`).join('')}
+                                </select>
+                            </div>
+                            <div>
+                                <label class="text-sm font-semibold">Jam Kirim</label>
+                                <input type="time" id="schedule-time" value="08:00" class="w-full mt-1 px-4 py-3 border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 rounded-2xl">
+                            </div>
+                            <div>
+                                <label class="text-sm font-semibold">Ulangi</label>
+                                <select id="schedule-repeat" class="w-full mt-1 px-4 py-3 border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 rounded-2xl">
+                                    <option value="daily">Setiap Hari</option>
+                                    <option value="weekly">Setiap Minggu</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="flex gap-3 mt-6">
+                            <button onclick="closeScheduleModal()" class="flex-1 py-3 border border-slate-300 dark:border-slate-700 rounded-2xl">Batal</button>
+                            <button onclick="createSchedule()" class="flex-1 py-3 bg-emerald-500 text-white rounded-2xl">Buat Jadwal</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.body.insertAdjacentHTML('beforeend', modalHTML);
+        }
+
+        function closeScheduleModal() {
+            const modal = document.getElementById('schedule-modal');
+            if (modal) modal.remove();
+        }
+
+        async function createSchedule() {
+            const konsepId = document.getElementById('schedule-konsep').value;
+            const time = document.getElementById('schedule-time').value;
+            const repeat = document.getElementById('schedule-repeat').value;
+            
+            const konsep = konsepList.find(k => k.id == konsepId);
+            if (!konsep) {
+                showToast('Konsep tidak ditemukan', 'error');
+                return;
+            }
+            
+            await fetch('/api/schedule', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    groupName: konsep.grup,
+                    template: konsep.isi,
+                    time: time,
+                    repeat: repeat
+                })
+            });
+            
+            showToast('Jadwal berhasil dibuat!', 'success');
+            closeScheduleModal();
+            loadSchedules();
+        }
+
+        async function loadSchedules() {
+            const res = await fetch('/api/schedules');
+            const schedules = await res.json();
+            
+            const container = document.getElementById('schedule-list');
+            container.innerHTML = '';
+            
+            if (schedules.length === 0) {
+                container.innerHTML = `<div class="text-slate-400 p-4">Belum ada jadwal</div>`;
+                return;
+            }
+            
+            schedules.forEach(s => {
+                const div = document.createElement('div');
+                div.className = 'p-4 border border-slate-200 dark:border-slate-700 rounded-2xl mb-3 flex justify-between items-center';
+                div.innerHTML = `
+                    <div>
+                        <div class="font-semibold">${s.groupName}</div>
+                        <div class="text-xs text-slate-500">${s.time} • ${s.repeat}</div>
+                    </div>
+                    <button onclick="deleteSchedule(${s.id})" class="px-4 py-1.5 text-xs bg-red-500 text-white rounded-2xl">Hapus</button>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        async function deleteSchedule(id) {
+            if (!confirm('Hapus jadwal ini?')) return;
+            
+            await fetch(`/api/schedule/${id}`, { method: 'DELETE' });
+            loadSchedules();
+            showToast('Jadwal berhasil dihapus', 'success');
+        }
+
+        // ================== PENGINGAT ==================
+        function showReminderModal() {
+            const modalHTML = `
+                <div id="reminder-modal" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
+                    <div class="bg-white dark:bg-slate-900 w-full max-w-md p-7 rounded-3xl border border-slate-200 dark:border-slate-700">
+                        <h3 class="font-bold text-xl mb-5">Buat Pengingat Baru</h3>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <label class="text-sm font-semibold">Nama Pengingat</label>
+                                <input type="text" id="reminder-name" class="w-full mt-1 px-4 py-3 border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 rounded-2xl" placeholder="Contoh: Pengingat Rapat">
+                            </div>
+                            
+                            <div>
+                                <label class="text-sm font-semibold">Pilih Konsep</label>
+                                <select id="reminder-konsep" class="w-full mt-1 px-4 py-3 border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 rounded-2xl">
+                                    ${konsepList.map(k => `<option value="${k.id}">${k.nama} → ${k.grup}</option>`).join('')}
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label class="text-sm font-semibold">Hari</label>
+                                <select id="reminder-day" class="w-full mt-1 px-4 py-3 border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 rounded-2xl">
+                                    <option value="monday-friday">Senin - Jumat</option>
+                                    <option value="daily">Setiap Hari</option>
+                                    <option value="monday">Senin</option>
+                                    <option value="tuesday">Selasa</option>
+                                    <option value="wednesday">Rabu</option>
+                                    <option value="thursday">Kamis</option>
+                                    <option value="friday">Jumat</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label class="text-sm font-semibold">Jam Kirim</label>
+                                <input type="time" id="reminder-time" value="08:00" class="w-full mt-1 px-4 py-3 border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 rounded-2xl">
+                            </div>
+                        </div>
+                        
+                        <div class="flex gap-3 mt-6">
+                            <button onclick="closeReminderModal()" class="flex-1 py-3 border border-slate-300 dark:border-slate-700 rounded-2xl">Batal</button>
+                            <button onclick="createReminder()" class="flex-1 py-3 bg-emerald-500 text-white rounded-2xl">Buat Pengingat</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.body.insertAdjacentHTML('beforeend', modalHTML);
+        }
+
+        function closeReminderModal() {
+            const modal = document.getElementById('reminder-modal');
+            if (modal) modal.remove();
+        }
+
+        async function createReminder() {
+            const name = document.getElementById('reminder-name').value.trim();
+            const konsepId = document.getElementById('reminder-konsep').value;
+            const day = document.getElementById('reminder-day').value;
+            const time = document.getElementById('reminder-time').value;
+            
+            if (!name) {
+                showToast('Nama pengingat harus diisi', 'error');
+                return;
+            }
+            
+            const konsep = konsepList.find(k => k.id == konsepId);
+            if (!konsep) {
+                showToast('Konsep tidak ditemukan', 'error');
+                return;
+            }
+            
+            const reminder = {
+                id: Date.now(),
+                name: name,
+                konsepId: konsepId,
+                grup: konsep.grup,
+                template: konsep.isi,
+                day: day,
+                time: time,
+                active: true,
+                lastProcessed: null
+            };
+            
+            reminderList.push(reminder);
+            localStorage.setItem('reminderList', JSON.stringify(reminderList));
+            
+            showToast('Pengingat berhasil dibuat!', 'success');
+            closeReminderModal();
+            loadReminders();
+        }
+
+        function loadReminders() {
+            const container = document.getElementById('reminder-list');
+            container.innerHTML = '';
+            
+            if (reminderList.length === 0) {
+                container.innerHTML = `<div class="text-slate-400 p-4">Belum ada pengingat</div>`;
+                return;
+            }
+            
+            reminderList.forEach(r => {
+                const div = document.createElement('div');
+                div.className = `p-4 border border-slate-200 dark:border-slate-700 rounded-2xl mb-3 flex justify-between items-center ${r.active ? '' : 'opacity-60'}`;
+                
+                const dayText = r.day === 'monday-friday' ? 'Senin - Jumat' : 
+                               r.day === 'daily' ? 'Setiap Hari' : r.day;
+                
+                div.innerHTML = `
+                    <div>
+                        <div class="font-semibold">${r.name}</div>
+                        <div class="text-xs text-slate-500">${dayText} • ${r.time}</div>
+                        <div class="text-xs text-emerald-600 mt-1">${r.grup}</div>
+                    </div>
+                    <div class="flex gap-2">
+                        <button onclick="toggleReminder(${r.id})" class="px-3 py-1 text-xs ${r.active ? 'bg-emerald-500' : 'bg-slate-400'} text-white rounded-xl">
+                            ${r.active ? 'Aktif' : 'Nonaktif'}
+                        </button>
+                        <button onclick="deleteReminder(${r.id})" class="px-3 py-1 text-xs bg-red-500 text-white rounded-xl">Hapus</button>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function toggleReminder(id) {
+            const reminder = reminderList.find(r => r.id === id);
+            if (!reminder) return;
+            
+            reminder.active = !reminder.active;
+            localStorage.setItem('reminderList', JSON.stringify(reminderList));
+            loadReminders();
+            showToast(`Pengingat ${reminder.active ? 'diaktifkan' : 'dinonaktifkan'}`, 'success');
+        }
+
+        function deleteReminder(id) {
+            if (!confirm('Hapus pengingat ini?')) return;
+            
+            reminderList = reminderList.filter(r => r.id !== id);
+            localStorage.setItem('reminderList', JSON.stringify(reminderList));
+            loadReminders();
+            showToast('Pengingat berhasil dihapus', 'success');
+        }
+
+        // ================== MANAJEMEN PESAN ==================
+        function showMessageTab(tab) {
+            let containerId = '';
+            if (tab === 'konsep') containerId = 'manajemen-konsep-content';
+            if (tab === 'keluar') containerId = 'manajemen-keluar-content';
+            if (tab === 'masuk') containerId = 'manajemen-masuk-content';
+            if (tab === 'gagal') containerId = 'manajemen-gagal-content';
+            
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            
+            container.innerHTML = '';
+            
+            let html = '';
+            
+            if (tab === 'konsep') {
+                html = konsepList.map(k => `
+                    <div class="p-4 border border-slate-200 dark:border-slate-700 rounded-2xl mb-3">
+                        <div class="font-bold">${k.nama}</div>
+                        <div class="text-xs text-slate-500">Grup: ${k.grup}</div>
+                        <div class="text-sm mt-1">${k.isi}</div>
+                    </div>
+                `).join('');
+            } else if (tab === 'gagal') {
+                const failed = messageLogs.filter(l => l.status === 'failed');
+                html = failed.map(l => `
+                    <div class="p-4 border border-slate-200 dark:border-slate-700 rounded-2xl mb-3">
+                        <div class="font-bold">${l.contact}</div>
+                        <div class="text-xs text-slate-500">${new Date(l.timestamp).toLocaleString('id-ID')}</div>
+                        <div class="mt-3 flex gap-2">
+                            <button onclick="addFailedToKonsep(${l.id})" class="px-3 py-1 text-xs bg-emerald-500 text-white rounded-xl">Tambah ke Konsep</button>
+                            <button onclick="resendFailedMessage(${l.id})" class="px-3 py-1 text-xs bg-orange-500 text-white rounded-xl">Kirim Ulang</button>
+                        </div>
+                    </div>
+                `).join('');
+            } else {
+                const filtered = messageLogs.filter(l => {
+                    if (tab === 'keluar') return l.status === 'sent';
+                    if (tab === 'masuk') return l.status === 'received';
+                    return true;
+                });
+                
+                html = filtered.map(l => `
+                    <div class="p-3 border border-slate-200 dark:border-slate-700 rounded-xl mb-2 text-sm">
+                        <div class="font-semibold">${l.contact}</div>
+                    </div>
+                `).join('');
+            }
+            
+            container.innerHTML = html || '<div class="text-slate-400 p-4">Tidak ada data</div>';
+        }
+
+        function addFailedToKonsep(id) {
+            const log = messageLogs.find(l => l.id === id);
+            if (!log) return;
+            
+            const name = prompt('Nama konsep:', `Ulangan - ${log.contact}`);
+            if (!name) return;
+            
+            konsepList.push({
+                id: Date.now(),
+                nama: name,
+                grup: 'Group 1',
+                isi: log.message
+            });
+            
+            showToast('Pesan berhasil ditambahkan ke Konsep', 'success');
+            updateCounts();
+        }
+
+        async function resendFailedMessage(id) {
+            const log = messageLogs.find(l => l.id === id);
+            if (!log) return;
+            
+            await fetch('/api/blast', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    contacts: [{ nomor: log.nomor, nama: log.contact, selected: true }],
+                    template: log.message
+                })
+            });
+            
+            showToast('Pesan dikirim ulang!', 'success');
+        }
+
+        function init() {
+            initTheme();
+            showSection('dashboard');
+            
+            document.getElementById('stat-kontak').innerText = contacts.length;
+            document.getElementById('stat-grup').innerText = Object.keys(groups).length;
+            
+            const savedReminders = localStorage.getItem('reminderList');
+            if (savedReminders) {
+                reminderList = JSON.parse(savedReminders);
+            }
+            
+            setTimeout(() => {
+                updateCounts();
+            }, 500);
+        }
+
+        window.onload = init;
+    </script>
+</body>
+</html>
