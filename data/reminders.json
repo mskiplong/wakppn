@@ -1,0 +1,13 @@
+[
+  {
+    "id": "1781886611991",
+    "name": "absen",
+    "group": "cek1",
+    "template": "absen",
+    "repeat": "daily",
+    "time": "23:32",
+    "active": true,
+    "dayOfMonth": 1,
+    "month": 1
+  }
+]

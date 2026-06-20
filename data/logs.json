@@ -1,0 +1,52 @@
+[
+  {
+    "id": "1781923947903",
+    "timestamp": "2026-06-20T02:52:27.903Z",
+    "type": "in",
+    "contactName": "Sari_Astana",
+    "nomor": "",
+    "message": "",
+    "status": "received",
+    "group": null
+  },
+  {
+    "id": "1781923939661",
+    "timestamp": "2026-06-20T02:52:19.661Z",
+    "type": "in",
+    "contactName": "Sari_Astana",
+    "nomor": "",
+    "message": "",
+    "status": "received",
+    "group": null
+  },
+  {
+    "id": "1781923932155",
+    "timestamp": "2026-06-20T02:52:12.155Z",
+    "type": "in",
+    "contactName": "Ida Nurkayadi",
+    "nomor": "174161058078965",
+    "message": "wa-blaster-pro-v2 (7).zip",
+    "status": "received",
+    "group": null
+  },
+  {
+    "id": "1781923869922",
+    "timestamp": "2026-06-20T02:51:09.922Z",
+    "type": "in",
+    "contactName": "Sari_Astana",
+    "nomor": "",
+    "message": "",
+    "status": "received",
+    "group": null
+  },
+  {
+    "id": "1781923821667",
+    "timestamp": "2026-06-20T02:50:21.667Z",
+    "type": "in",
+    "contactName": "Sari_Astana",
+    "nomor": "",
+    "message": "",
+    "status": "received",
+    "group": null
+  }
+]
