@@ -1,0 +1,20 @@
+[
+  {
+    "id": "admin",
+    "username": "admin",
+    "passwordHash": "6f3f1860b7c5776d4d5bca2d556975803b07032bb78c864787605fef419a63eaed5e1479225d2d72cd47be61f7a09294aaf7231b03745546023506f2b5cf88e3",
+    "salt": "6c815e8b69a11911a0e31cd6315edb82",
+    "role": "admin",
+    "createdAt": "2026-06-20T09:04:08.832Z",
+    "createdBy": "system"
+  },
+  {
+    "id": "1781955111208-d59bf5f1",
+    "username": "user",
+    "passwordHash": "21d78c69eed8bf7b6c537811bcdcc51b1a9e937f46f9d686b214c93f3c2c28cd51df1639f538358e379eca18a24ae081e8b50790a311defef2e2080739c68f43",
+    "salt": "46bdcf8b3c1a73e82106adbaea2e1075",
+    "role": "user",
+    "createdAt": "2026-06-20T11:31:51.208Z",
+    "createdBy": "admin"
+  }
+]

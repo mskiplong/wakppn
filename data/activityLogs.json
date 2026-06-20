@@ -1,0 +1,792 @@
+[
+  {
+    "id": "1781971549811-1dee54ff",
+    "timestamp": "2026-06-20T16:05:49.811Z",
+    "userId": "admin",
+    "username": "admin",
+    "role": "admin",
+    "action": "POST /api/contacts/bulk",
+    "detail": {
+      "statusCode": 200,
+      "success": true
+    },
+    "ip": "182.2.42.33",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"
+  },
+  {
+    "id": "1781971470530-e1e419b5",
+    "timestamp": "2026-06-20T16:04:30.530Z",
+    "userId": "admin",
+    "username": "admin",
+    "role": "admin",
+    "action": "LOGIN_SUCCESS",
+    "detail": {},
+    "ip": "182.2.42.33",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"
+  },
+  {
+    "id": "1781971320113-b75675c8",
+    "timestamp": "2026-06-20T16:02:00.113Z",
+    "userId": "admin",
+    "username": "admin",
+    "role": "admin",
+    "action": "DELETE /api/contacts",
+    "detail": {
+      "statusCode": 200,
+      "success": true
+    },
+    "ip": "182.2.42.33",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"
+  },
+  {
+    "id": "1781971320108-6313659a",
+    "timestamp": "2026-06-20T16:02:00.109Z",
+    "userId": "admin",
+    "username": "admin",
+    "role": "admin",
+    "action": "DELETE /api/logs",
+    "detail": {
+      "statusCode": 200,
+      "success": true
+    },
+    "ip": "182.2.42.33",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"
+  },
+  {
+    "id": "1781971320099-bb330b8a",
+    "timestamp": "2026-06-20T16:02:00.099Z",
+    "userId": "admin",
+    "username": "admin",
+    "role": "admin",
+    "action": "PUT /api/groups",
+    "detail": {
+      "statusCode": 200,
+      "success": true
+    },
+    "ip": "182.2.42.33",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"
+  },
+  {
+    "id": "1781971320094-95407e64",
+    "timestamp": "2026-06-20T16:02:00.094Z",
+    "userId": "admin",
+    "username": "admin",
+    "role": "admin",
+    "action": "POST /api/reminders",
+    "detail": {
+      "statusCode": 200,
+      "success": true
+    },
+    "ip": "182.2.42.33",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"
+  },
+  {
+    "id": "1781971320084-7ea67603",
+    "timestamp": "2026-06-20T16:02:00.084Z",
+    "userId": "admin",
+    "username": "admin",
+    "role": "admin",
+    "action": "POST /api/konseps",
+    "detail": {
+      "statusCode": 200,
+      "success": true
+    },
+    "ip": "182.2.42.33",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"
+  },
+  {
+    "id": "1781971308765-4e86178e",
+    "timestamp": "2026-06-20T16:01:48.765Z",
+    "userId": "admin",
+    "username": "admin",
+    "role": "admin",
+    "action": "POST /api/settings",
+    "detail": {
+      "statusCode": 200,
+      "success": true
+    },
+    "ip": "182.2.42.33",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"
+  },
+  {
+    "id": "1781971291810-81f7000d",
+    "timestamp": "2026-06-20T16:01:31.810Z",
+    "userId": "admin",
+    "username": "admin",
+    "role": "admin",
+    "action": "LOGIN_SUCCESS",
+    "detail": {},
+    "ip": "182.2.42.33",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"
+  },
+  {
+    "id": "1781969703669-5546d31b",
+    "timestamp": "2026-06-20T15:35:03.669Z",
+    "userId": "admin",
+    "username": "admin",
+    "role": "admin",
+    "action": "POST /api/blast",
+    "detail": {
+      "statusCode": 200,
+      "success": true
+    },
+    "ip": "2404:c0:7116:1ac8:7424:a4e6:8239:d2c6",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"
+  },
+  {
+    "id": "1781969620693-63eb843b",
+    "timestamp": "2026-06-20T15:33:40.693Z",
+    "userId": "admin",
+    "username": "admin",
+    "role": "admin",
+    "action": "DELETE /api/contacts/174161058078965",
+    "detail": {
+      "statusCode": 200,
+      "success": true
+    },
+    "ip": "2404:c0:7116:1ac8:7424:a4e6:8239:d2c6",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"
+  },
+  {
+    "id": "1781969261656-0ce42778",
+    "timestamp": "2026-06-20T15:27:41.656Z",
+    "userId": "admin",
+    "username": "admin",
+    "role": "admin",
+    "action": "POST /api/blast",
+    "detail": {
+      "statusCode": 200,
+      "success": true
+    },
+    "ip": "2404:c0:7116:1ac8:7424:a4e6:8239:d2c6",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"
+  },
+  {
+    "id": "1781969219811-6f04d589",
+    "timestamp": "2026-06-20T15:26:59.811Z",
+    "userId": "admin",
+    "username": "admin",
+    "role": "admin",
+    "action": "LOGIN_SUCCESS",
+    "detail": {},
+    "ip": "2404:c0:7116:1ac8:7424:a4e6:8239:d2c6",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"
+  },
+  {
+    "id": "1781967606316-fcb54898",
+    "timestamp": "2026-06-20T15:00:06.316Z",
+    "userId": "admin",
+    "username": "admin",
+    "role": "admin",
+    "action": "POST /api/blast",
+    "detail": {
+      "statusCode": 200,
+      "success": true
+    },
+    "ip": "::1",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"
+  },
+  {
+    "id": "1781967506521-04002853",
+    "timestamp": "2026-06-20T14:58:26.521Z",
+    "userId": "admin",
+    "username": "admin",
+    "role": "admin",
+    "action": "LOGIN_SUCCESS",
+    "detail": {},
+    "ip": "::1",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"
+  },
+  {
+    "id": "1781959060027-e7bf632a",
+    "timestamp": "2026-06-20T12:37:40.028Z",
+    "userId": "admin",
+    "username": "admin",
+    "role": "admin",
+    "action": "POST /api/blast",
+    "detail": {
+      "statusCode": 200,
+      "success": true
+    },
+    "ip": "::1",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"
+  },
+  {
+    "id": "1781959031525-274d1d7f",
+    "timestamp": "2026-06-20T12:37:11.525Z",
+    "userId": "admin",
+    "username": "admin",
+    "role": "admin",
+    "action": "LOGIN_SUCCESS",
+    "detail": {},
+    "ip": "::1",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"
+  },
+  {
+    "id": "1781958378024-d82efcb7",
+    "timestamp": "2026-06-20T12:26:18.024Z",
+    "userId": "admin",
+    "username": "admin",
+    "role": "admin",
+    "action": "DELETE /api/logs/failed",
+    "detail": {
+      "statusCode": 200,
+      "success": true
+    },
+    "ip": "::1",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"
+  },
+  {
+    "id": "1781958359078-22ea5b11",
+    "timestamp": "2026-06-20T12:25:59.078Z",
+    "userId": "admin",
+    "username": "admin",
+    "role": "admin",
+    "action": "POST /api/blast",
+    "detail": {
+      "statusCode": 200,
+      "success": true
+    },
+    "ip": "::1",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"
+  },
+  {
+    "id": "1781958190520-3f587400",
+    "timestamp": "2026-06-20T12:23:10.520Z",
+    "userId": "admin",
+    "username": "admin",
+    "role": "admin",
+    "action": "POST /api/settings",
+    "detail": {
+      "statusCode": 200,
+      "success": true
+    },
+    "ip": "::1",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"
+  },
+  {
+    "id": "1781956558002-fe7dff85",
+    "timestamp": "2026-06-20T11:55:58.002Z",
+    "userId": "1781955111208-d59bf5f1",
+    "username": "user",
+    "role": "user",
+    "action": "POST /api/reminders",
+    "detail": {
+      "statusCode": 200,
+      "success": true
+    },
+    "ip": "158.140.166.114",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+  },
+  {
+    "id": "1781956344652-8077ecb6",
+    "timestamp": "2026-06-20T11:52:24.652Z",
+    "userId": "1781955111208-d59bf5f1",
+    "username": "user",
+    "role": "user",
+    "action": "POST /api/contacts/bulk",
+    "detail": {
+      "statusCode": 200,
+      "success": true
+    },
+    "ip": "158.140.166.114",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+  },
+  {
+    "id": "1781956326720-49290412",
+    "timestamp": "2026-06-20T11:52:06.721Z",
+    "userId": "1781955111208-d59bf5f1",
+    "username": "user",
+    "role": "user",
+    "action": "POST /api/reminders",
+    "detail": {
+      "statusCode": 200,
+      "success": true
+    },
+    "ip": "158.140.166.114",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+  },
+  {
+    "id": "1781956136366-85753036",
+    "timestamp": "2026-06-20T11:48:56.366Z",
+    "userId": "admin",
+    "username": "admin",
+    "role": "admin",
+    "action": "LOGIN_SUCCESS",
+    "detail": {},
+    "ip": "::1",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"
+  },
+  {
+    "id": "1781956128384-c4b22ee3",
+    "timestamp": "2026-06-20T11:48:48.384Z",
+    "userId": "1781955111208-d59bf5f1",
+    "username": "user",
+    "role": "user",
+    "action": "POST /api/blast",
+    "detail": {
+      "statusCode": 200,
+      "success": true
+    },
+    "ip": "158.140.166.114",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+  },
+  {
+    "id": "1781956024690-64e89f78",
+    "timestamp": "2026-06-20T11:47:04.690Z",
+    "userId": "1781955111208-d59bf5f1",
+    "username": "user",
+    "role": "user",
+    "action": "POST /api/blast",
+    "detail": {
+      "statusCode": 200,
+      "success": true
+    },
+    "ip": "158.140.166.114",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+  },
+  {
+    "id": "1781955909707-a6a02b64",
+    "timestamp": "2026-06-20T11:45:09.707Z",
+    "userId": "1781955111208-d59bf5f1",
+    "username": "user",
+    "role": "user",
+    "action": "POST /api/contacts/bulk",
+    "detail": {
+      "statusCode": 200,
+      "success": true
+    },
+    "ip": "158.140.166.114",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+  },
+  {
+    "id": "1781955878189-eddcfd03",
+    "timestamp": "2026-06-20T11:44:38.189Z",
+    "userId": "1781955111208-d59bf5f1",
+    "username": "user",
+    "role": "user",
+    "action": "POST /api/konseps",
+    "detail": {
+      "statusCode": 200,
+      "success": true
+    },
+    "ip": "158.140.166.114",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+  },
+  {
+    "id": "1781955513811-6248d09d",
+    "timestamp": "2026-06-20T11:38:33.811Z",
+    "userId": "1781955111208-d59bf5f1",
+    "username": "user",
+    "role": "user",
+    "action": "POST /api/blast",
+    "detail": {
+      "statusCode": 200,
+      "success": true
+    },
+    "ip": "158.140.166.114",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+  },
+  {
+    "id": "1781955462120-b86faf84",
+    "timestamp": "2026-06-20T11:37:42.120Z",
+    "userId": "1781955111208-d59bf5f1",
+    "username": "user",
+    "role": "user",
+    "action": "POST /api/contacts/bulk",
+    "detail": {
+      "statusCode": 200,
+      "success": true
+    },
+    "ip": "158.140.166.114",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+  },
+  {
+    "id": "1781955294336-fc8725b6",
+    "timestamp": "2026-06-20T11:34:54.336Z",
+    "userId": "1781955111208-d59bf5f1",
+    "username": "user",
+    "role": "user",
+    "action": "POST /api/konseps",
+    "detail": {
+      "statusCode": 200,
+      "success": true
+    },
+    "ip": "158.140.166.114",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+  },
+  {
+    "id": "1781955162902-bcf47eb6",
+    "timestamp": "2026-06-20T11:32:42.902Z",
+    "userId": "admin",
+    "username": "admin",
+    "role": "admin",
+    "action": "POST /api/contacts/bulk",
+    "detail": {
+      "statusCode": 200,
+      "success": true
+    },
+    "ip": "182.2.42.57",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"
+  },
+  {
+    "id": "1781955123411-b10c2999",
+    "timestamp": "2026-06-20T11:32:03.411Z",
+    "userId": "1781955111208-d59bf5f1",
+    "username": "user",
+    "role": "user",
+    "action": "LOGIN_SUCCESS",
+    "detail": {},
+    "ip": "158.140.166.114",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+  },
+  {
+    "id": "1781955113448-8fe33b68",
+    "timestamp": "2026-06-20T11:31:53.448Z",
+    "userId": "admin",
+    "username": "admin",
+    "role": "admin",
+    "action": "LOGOUT",
+    "detail": {},
+    "ip": "158.140.166.114",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+  },
+  {
+    "id": "1781955111210-87693b9f",
+    "timestamp": "2026-06-20T11:31:51.210Z",
+    "userId": "admin",
+    "username": "admin",
+    "role": "admin",
+    "action": "POST /api/users",
+    "detail": {
+      "statusCode": 200,
+      "success": true
+    },
+    "ip": "158.140.166.114",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+  },
+  {
+    "id": "1781955111209-ad06ff83",
+    "timestamp": "2026-06-20T11:31:51.209Z",
+    "userId": "admin",
+    "username": "admin",
+    "role": "admin",
+    "action": "USER_CREATED",
+    "detail": {
+      "username": "user",
+      "role": "user"
+    },
+    "ip": "158.140.166.114",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+  },
+  {
+    "id": "1781955089934-ae38c69e",
+    "timestamp": "2026-06-20T11:31:29.934Z",
+    "userId": "admin",
+    "username": "admin",
+    "role": "admin",
+    "action": "LOGIN_SUCCESS",
+    "detail": {},
+    "ip": "158.140.166.114",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+  },
+  {
+    "id": "1781955077212-010755bd",
+    "timestamp": "2026-06-20T11:31:17.212Z",
+    "userId": "unknown",
+    "username": "mski",
+    "role": "unknown",
+    "action": "LOGIN_FAILED",
+    "detail": {
+      "reason": "unknown_user"
+    },
+    "ip": "158.140.166.114",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+  },
+  {
+    "id": "1781953677069-04954af7",
+    "timestamp": "2026-06-20T11:07:57.069Z",
+    "userId": "admin",
+    "username": "admin",
+    "role": "admin",
+    "action": "LOGIN_SUCCESS",
+    "detail": {},
+    "ip": "2404:c0:7116:1ac8:f939:6fa6:d7b9:8ada",
+    "userAgent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Mobile Safari/537.36"
+  },
+  {
+    "id": "1781952992164-a6fe7e56",
+    "timestamp": "2026-06-20T10:56:32.164Z",
+    "userId": "admin",
+    "username": "admin",
+    "role": "admin",
+    "action": "PUT /api/contacts",
+    "detail": {
+      "statusCode": 200,
+      "success": true
+    },
+    "ip": "182.2.42.57",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"
+  },
+  {
+    "id": "1781952992162-6237e82b",
+    "timestamp": "2026-06-20T10:56:32.162Z",
+    "userId": "admin",
+    "username": "admin",
+    "role": "admin",
+    "action": "PUT /api/groups",
+    "detail": {
+      "statusCode": 200,
+      "success": true
+    },
+    "ip": "182.2.42.57",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"
+  },
+  {
+    "id": "1781952987817-14227723",
+    "timestamp": "2026-06-20T10:56:27.817Z",
+    "userId": "admin",
+    "username": "admin",
+    "role": "admin",
+    "action": "DELETE /api/contacts",
+    "detail": {
+      "statusCode": 200,
+      "success": true
+    },
+    "ip": "182.2.42.57",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"
+  },
+  {
+    "id": "1781952951951-7947ce6e",
+    "timestamp": "2026-06-20T10:55:51.951Z",
+    "userId": "admin",
+    "username": "admin",
+    "role": "admin",
+    "action": "LOGIN_SUCCESS",
+    "detail": {},
+    "ip": "182.2.42.57",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"
+  },
+  {
+    "id": "1781952305405-e1173e41",
+    "timestamp": "2026-06-20T10:45:05.405Z",
+    "userId": "admin",
+    "username": "admin",
+    "role": "admin",
+    "action": "POST /api/contacts/bulk",
+    "detail": {
+      "statusCode": 200,
+      "success": true
+    },
+    "ip": "182.2.42.57",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"
+  },
+  {
+    "id": "1781952222187-cb0259e4",
+    "timestamp": "2026-06-20T10:43:42.187Z",
+    "userId": "admin",
+    "username": "admin",
+    "role": "admin",
+    "action": "DELETE /api/contacts",
+    "detail": {
+      "statusCode": 200,
+      "success": true
+    },
+    "ip": "182.2.42.57",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"
+  },
+  {
+    "id": "1781952222108-3fc17d03",
+    "timestamp": "2026-06-20T10:43:42.108Z",
+    "userId": "admin",
+    "username": "admin",
+    "role": "admin",
+    "action": "POST /api/reminders",
+    "detail": {
+      "statusCode": 200,
+      "success": true
+    },
+    "ip": "182.2.42.57",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"
+  },
+  {
+    "id": "1781952222105-ea56c1d5",
+    "timestamp": "2026-06-20T10:43:42.105Z",
+    "userId": "admin",
+    "username": "admin",
+    "role": "admin",
+    "action": "PUT /api/groups",
+    "detail": {
+      "statusCode": 200,
+      "success": true
+    },
+    "ip": "182.2.42.57",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"
+  },
+  {
+    "id": "1781952222102-4c39c073",
+    "timestamp": "2026-06-20T10:43:42.102Z",
+    "userId": "admin",
+    "username": "admin",
+    "role": "admin",
+    "action": "DELETE /api/logs",
+    "detail": {
+      "statusCode": 200,
+      "success": true
+    },
+    "ip": "182.2.42.57",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"
+  },
+  {
+    "id": "1781952222097-82463fb4",
+    "timestamp": "2026-06-20T10:43:42.097Z",
+    "userId": "admin",
+    "username": "admin",
+    "role": "admin",
+    "action": "POST /api/konseps",
+    "detail": {
+      "statusCode": 200,
+      "success": true
+    },
+    "ip": "182.2.42.57",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"
+  },
+  {
+    "id": "1781952159587-36b20af2",
+    "timestamp": "2026-06-20T10:42:39.587Z",
+    "userId": "admin",
+    "username": "admin",
+    "role": "admin",
+    "action": "POST /api/contacts/bulk",
+    "detail": {
+      "statusCode": 200,
+      "success": true
+    },
+    "ip": "182.2.42.57",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"
+  },
+  {
+    "id": "1781951844909-18b8c7b4",
+    "timestamp": "2026-06-20T10:37:24.910Z",
+    "userId": "admin",
+    "username": "admin",
+    "role": "admin",
+    "action": "DELETE /api/reminders/1781886611991",
+    "detail": {
+      "statusCode": 200,
+      "success": true
+    },
+    "ip": "182.2.42.57",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"
+  },
+  {
+    "id": "1781951756658-f6077e7a",
+    "timestamp": "2026-06-20T10:35:56.658Z",
+    "userId": "admin",
+    "username": "admin",
+    "role": "admin",
+    "action": "LOGIN_SUCCESS",
+    "detail": {},
+    "ip": "182.2.42.57",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"
+  },
+  {
+    "id": "1781951748201-c05fc915",
+    "timestamp": "2026-06-20T10:35:48.201Z",
+    "userId": "admin",
+    "username": "admin",
+    "role": "admin",
+    "action": "LOGIN_FAILED",
+    "detail": {
+      "reason": "invalid_password"
+    },
+    "ip": "182.2.42.57",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"
+  },
+  {
+    "id": "1781951523665-8b256784",
+    "timestamp": "2026-06-20T10:32:03.665Z",
+    "userId": "admin",
+    "username": "admin",
+    "role": "admin",
+    "action": "LOGIN_SUCCESS",
+    "detail": {},
+    "ip": "182.2.42.57",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"
+  },
+  {
+    "id": "1781950318875-8948f3a1",
+    "timestamp": "2026-06-20T10:11:58.875Z",
+    "userId": "admin",
+    "username": "admin",
+    "role": "admin",
+    "action": "LOGIN_SUCCESS",
+    "detail": {},
+    "ip": "::1",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"
+  },
+  {
+    "id": "1781947417064-c87636b7",
+    "timestamp": "2026-06-20T09:23:37.064Z",
+    "userId": "admin",
+    "username": "admin",
+    "role": "admin",
+    "action": "LOGIN_SUCCESS",
+    "detail": {},
+    "ip": "::1",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"
+  },
+  {
+    "id": "1781947116788-4c8655e0",
+    "timestamp": "2026-06-20T09:18:36.788Z",
+    "userId": "admin",
+    "username": "admin",
+    "role": "admin",
+    "action": "DELETE /api/konseps/1781885935821",
+    "detail": {
+      "statusCode": 200,
+      "success": true
+    },
+    "ip": "::1",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"
+  },
+  {
+    "id": "1781947093892-d92c6f2b",
+    "timestamp": "2026-06-20T09:18:13.893Z",
+    "userId": "admin",
+    "username": "admin",
+    "role": "admin",
+    "action": "DELETE /api/logs/received",
+    "detail": {
+      "statusCode": 200,
+      "success": true
+    },
+    "ip": "::1",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"
+  },
+  {
+    "id": "1781946428921-75606112",
+    "timestamp": "2026-06-20T09:07:08.921Z",
+    "userId": "admin",
+    "username": "admin",
+    "role": "admin",
+    "action": "GET /api/connect",
+    "detail": {
+      "statusCode": 304,
+      "success": true
+    },
+    "ip": "::1",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"
+  },
+  {
+    "id": "1781946363767-457dd788",
+    "timestamp": "2026-06-20T09:06:03.767Z",
+    "userId": "admin",
+    "username": "admin",
+    "role": "admin",
+    "action": "LOGIN_SUCCESS",
+    "detail": {},
+    "ip": "::1",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"
+  }
+]
