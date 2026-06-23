@@ -974,6 +974,83 @@
             clear: both;
         }
 
+        .group-contact-preview {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-primary);
+            border-radius: 14px;
+            padding: 14px;
+            margin: -6px 0 18px;
+        }
+
+        .group-contact-preview-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+            color: var(--text-primary);
+            font-size: 14px;
+            font-weight: 800;
+        }
+
+        .group-contact-preview-title span {
+            color: var(--text-tertiary);
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .group-contact-table-wrap {
+            max-height: 240px;
+            overflow: auto;
+            -webkit-overflow-scrolling: touch;
+            border: 1px solid var(--border-primary);
+            border-radius: 12px;
+            background: var(--bg-primary);
+        }
+
+        .group-contact-table {
+            width: 100%;
+            min-width: 760px;
+            border-collapse: collapse;
+            font-size: 12px;
+        }
+
+        .group-contact-table th,
+        .group-contact-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--border-primary);
+            border-right: 1px solid var(--border-primary);
+            white-space: nowrap;
+            max-width: 220px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .group-contact-table th {
+            position: sticky;
+            top: 0;
+            z-index: 1;
+            background: var(--bg-secondary);
+            color: var(--text-tertiary);
+            text-align: left;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+        .group-contact-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .group-contact-preview-empty {
+            padding: 18px;
+            color: var(--text-tertiary);
+            font-size: 13px;
+            text-align: center;
+        }
+
         .data-preview h4 {
             font-size: 14px;
             font-weight: 700;
@@ -1035,6 +1112,23 @@
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
+        }
+
+        .formula-example {
+            margin-top: 12px;
+            padding: 12px 14px;
+            border-radius: 10px;
+            background: var(--bg-primary);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            color: var(--text-secondary);
+            font-size: 12px;
+            line-height: 1.55;
+        }
+
+        .formula-example code {
+            color: var(--accent);
+            font-weight: 800;
+            font-family: 'SF Mono', 'Consolas', monospace;
         }
 
         .variable-item {
@@ -1633,6 +1727,9 @@
             .modal-box .grid-2, .modal-box .grid-3 { grid-template-columns: 1fr; gap: 0; }
             .modal-box .form-group { margin-bottom: 16px; }
             .modal-box .form-textarea { min-height: 110px; }
+            .group-contact-table-wrap { max-height: 220px; }
+            .group-contact-table { min-width: 720px; font-size: 11px; }
+            .group-contact-table th, .group-contact-table td { padding: 9px 10px; max-width: 180px; }
             .toast-container { left: 14px; right: 14px; bottom: 14px; }
             .toast { width: 100%; padding: 14px 16px; }
             .notification-badge { top: 72px; left: 14px; right: 14px; }
@@ -1651,6 +1748,9 @@
             .form-input, .form-select, .form-textarea { padding: 12px 14px; }
             .modal-overlay { padding: 8px; }
             .modal-box { padding: 18px 14px; max-height: calc(100svh - 16px); border-radius: 16px; }
+            .group-contact-preview { padding: 10px; margin-bottom: 14px; }
+            .group-contact-table-wrap { max-height: 200px; }
+            .group-contact-table { min-width: 680px; }
         }
 
         /* Realtime notification badge */
@@ -2262,13 +2362,32 @@
                     </div>
 
                     <div class="variable-guide">
-                        <h4><i class="fa-solid fa-code"></i> Variabel yang tersedia:</h4>
+                        <h4><i class="fa-solid fa-code"></i> Formula variabel pesan:</h4>
                         <div class="variable-list">
                             <div class="variable-item"><span>{x1}</span> - Nomor WA</div>
-                            <div class="variable-item"><span>{x2}</span> - Nama Grup</div>
+                            <div class="variable-item"><span>{x2}</span> - Grup</div>
                             <div class="variable-item"><span>{x3}</span> - Kolom 3</div>
                             <div class="variable-item"><span>{x4}</span> - Kolom 4</div>
                             <div class="variable-item"><span>{x5}</span> - Kolom 5</div>
+                            <div class="variable-item"><span>{x6}</span> - Kolom 6</div>
+                            <div class="variable-item"><span>{x7}</span> - Kolom 7</div>
+                            <div class="variable-item"><span>{x8}</span> - Kolom 8</div>
+                            <div class="variable-item"><span>{x9}</span> - Kolom 9</div>
+                            <div class="variable-item"><span>{x10}</span> - Kolom 10</div>
+                            <div class="variable-item"><span>{x11}</span> - Kolom 11</div>
+                            <div class="variable-item"><span>{x12}</span> - Kolom 12</div>
+                            <div class="variable-item"><span>{x13}</span> - Kolom 13</div>
+                            <div class="variable-item"><span>{x14}</span> - Kolom 14</div>
+                            <div class="variable-item"><span>{x15}</span> - Kolom 15</div>
+                            <div class="variable-item"><span>{x16}</span> - Kolom 16</div>
+                            <div class="variable-item"><span>{x17}</span> - Kolom 17</div>
+                            <div class="variable-item"><span>{x18}</span> - Kolom 18</div>
+                            <div class="variable-item"><span>{x19}</span> - Kolom 19</div>
+                            <div class="variable-item"><span>{x20}</span> - Kolom 20</div>
+                        </div>
+                        <div class="formula-example">
+                            <strong>Cara pakai:</strong> tulis nama kolom dengan kurung kurawal, contoh <code>{x3}</code>.<br>
+                            <strong>Contoh:</strong> <code>Yth. {x3}, nomor {x1}, grup {x2}, tagihan {x4} jatuh tempo {x5}.</code>
                         </div>
                     </div>
 
@@ -3279,10 +3398,93 @@
         showToast('Konsep berhasil dihapus', 'success');
     }
 
+    function getContactXColumns(contactList) {
+        const columns = new Set(['x1', 'x2']);
+        contactList.forEach(contact => {
+            Object.keys(contact || {}).forEach(key => {
+                if (/^x\d+$/i.test(key)) columns.add(key.toLowerCase());
+            });
+        });
+        return Array.from(columns).sort((a, b) => parseInt(a.slice(1)) - parseInt(b.slice(1)));
+    }
+
+    function renderGroupContactPreview(selectId, containerId, allowEmptyGroup = false) {
+        const select = document.getElementById(selectId);
+        const container = document.getElementById(containerId);
+        if (!select || !container) return;
+
+        const selectedGroup = select.value;
+        if (!selectedGroup && !allowEmptyGroup) {
+            container.innerHTML = `
+                <div class="group-contact-preview">
+                    <div class="group-contact-preview-empty"><i class="fa-solid fa-users"></i> Pilih grup target untuk melihat tabel kontak dan variabel x1, x2, x3, dst.</div>
+                </div>
+            `;
+            return;
+        }
+
+        if (!selectedGroup && allowEmptyGroup) {
+            container.innerHTML = `
+                <div class="group-contact-preview">
+                    <div class="group-contact-preview-empty"><i class="fa-solid fa-circle-info"></i> Pilih grup tertentu untuk melihat contoh kontak. Konsep dengan grup kosong berlaku umum sebagai template.</div>
+                </div>
+            `;
+            return;
+        }
+
+        const groupContacts = contacts.filter(contact => (contact.x2 || '') === selectedGroup);
+        if (groupContacts.length === 0) {
+            container.innerHTML = `
+                <div class="group-contact-preview">
+                    <div class="group-contact-preview-title"><div><i class="fa-solid fa-table"></i> Kontak Grup: ${escapeHtml(selectedGroup)}</div><span>0 kontak</span></div>
+                    <div class="group-contact-preview-empty">Belum ada kontak pada grup ini.</div>
+                </div>
+            `;
+            return;
+        }
+
+        const columns = getContactXColumns(groupContacts);
+        container.innerHTML = `
+            <div class="group-contact-preview">
+                <div class="group-contact-preview-title">
+                    <div><i class="fa-solid fa-table"></i> Kontak Grup: ${escapeHtml(selectedGroup)}</div>
+                    <span>${groupContacts.length} kontak • geser kiri/kanan dan atas/bawah</span>
+                </div>
+                <div class="group-contact-table-wrap">
+                    <table class="group-contact-table">
+                        <thead><tr>${columns.map(col => `<th>${escapeHtml(col)}</th>`).join('')}</tr></thead>
+                        <tbody>
+                            ${groupContacts.map(contact => `
+                                <tr>${columns.map(col => `<td title="${escapeHtml(contact[col] || '')}">${escapeHtml(contact[col] || '-')}</td>`).join('')}</tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        `;
+    }
+
+    function formulaGuideHtml(contextLabel = 'pesan') {
+        const variables = Array.from({ length: 20 }, (_, i) => `x${i + 1}`);
+        return `
+            <div class="variable-guide" style="margin-bottom: 18px;">
+                <h4><i class="fa-solid fa-code"></i> Formula variabel ${contextLabel}</h4>
+                <div class="variable-list">
+                    ${variables.map(v => `<div class="variable-item"><span>{${v}}</span></div>`).join('')}
+                </div>
+                <div class="formula-example">
+                    <strong>Cara pakai:</strong> tulis variabel sesuai kolom kontak dengan kurung kurawal, contoh <code>{x3}</code>.<br>
+                    <strong>Arti umum:</strong> <code>{x1}</code> nomor WA, <code>{x2}</code> grup, <code>{x3}</code> nama/kolom 3, <code>{x4}</code> kolom 4, sampai <code>{x20}</code> kolom 20.<br>
+                    <strong>Contoh:</strong> <code>Yth. {x3}, nomor {x1}, grup {x2}. Mohon menindaklanjuti {x4} sebelum {x5}.</code>
+                </div>
+            </div>
+        `;
+    }
+
     function showAddConceptModal() {
         document.getElementById('modal-container').innerHTML = `
             <div class="modal-overlay" onclick="closeModal(event)">
-                <div class="modal-box" style="max-width: 600px;" onclick="event.stopPropagation()">
+                <div class="modal-box" style="max-width: 920px;" onclick="event.stopPropagation()">
                     <div class="modal-header">
                         <div class="modal-title"><i class="fa-solid fa-file-plus"></i> Tambah Konsep Pesan</div>
                         <button class="modal-close" onclick="closeAllModals()"><i class="fa-solid fa-times"></i></button>
@@ -3290,13 +3492,16 @@
                     <div class="form-group"><label class="form-label">Nama Konsep</label><input type="text" id="concept-name" class="form-input" placeholder="Contoh: Undangan Meeting"></div>
                     <div class="form-group">
                         <label class="form-label">Grup Target</label>
-                        <select id="concept-group" class="form-select"><option value="">-- Semua Grup --</option>${groups.map(g => `<option value="${g}">${g}</option>`).join('')}</select>
+                        <select id="concept-group" class="form-select" onchange="renderGroupContactPreview('concept-group', 'concept-group-preview', true)"><option value="">-- Semua Grup / Template Umum --</option>${groups.map(g => `<option value="${g}">${g}</option>`).join('')}</select>
                     </div>
-                    <div class="form-group"><label class="form-label">Template Pesan</label><textarea id="concept-template" class="form-textarea" rows="5" placeholder="Ketik template pesan..."></textarea></div>
+                    <div id="concept-group-preview"></div>
+                    ${formulaGuideHtml('konsep pesan')}
+                    <div class="form-group"><label class="form-label">Template Pesan</label><textarea id="concept-template" class="form-textarea" rows="5" placeholder="Contoh: Yth. {x3}, nomor WA {x1}, grup {x2}. Mohon menindaklanjuti {x4} sebelum {x5}. Variabel tersedia sampai {x20}."></textarea></div>
                     <button class="btn btn-primary" style="width: 100%; margin-top: 16px;" onclick="submitAddConcept()"><i class="fa-solid fa-save"></i> Simpan Konsep</button>
                 </div>
             </div>
         `;
+        renderGroupContactPreview('concept-group', 'concept-group-preview', true);
     }
 
     function submitAddConcept() {
@@ -3482,16 +3687,17 @@
     function showAddReminderModal() {
         document.getElementById('modal-container').innerHTML = `
             <div class="modal-overlay" onclick="closeModal(event)">
-                <div class="modal-box" style="max-width: 760px;" onclick="event.stopPropagation()">
+                <div class="modal-box" style="max-width: 920px;" onclick="event.stopPropagation()">
                     <div class="modal-header">
                         <div class="modal-title"><i class="fa-solid fa-bell"></i> Tambah Reminder Baru</div>
                         <button class="modal-close" onclick="closeAllModals()"><i class="fa-solid fa-times"></i></button>
                     </div>
                     <div class="form-group"><label class="form-label">Nama Reminder</label><input type="text" id="reminder-name" class="form-input" placeholder="Contoh: Pengingat Laporan"></div>
                     <div class="grid-2">
-                        <div class="form-group"><label class="form-label">Grup Target (x2)</label><select id="reminder-group" class="form-select"><option value="">-- Pilih Grup --</option>${groups.map(g => `<option value="${g}">${g}</option>`).join('')}</select></div>
+                        <div class="form-group"><label class="form-label">Grup Target (x2)</label><select id="reminder-group" class="form-select" onchange="renderGroupContactPreview('reminder-group', 'reminder-group-preview')"><option value="">-- Pilih Grup --</option>${groups.map(g => `<option value="${g}">${g}</option>`).join('')}</select></div>
                         <div class="form-group"><label class="form-label">Waktu Kirim</label><input type="time" id="reminder-time" class="form-input" value="09:00"></div>
                     </div>
+                    <div id="reminder-group-preview"></div>
                     <div class="form-group"><label class="form-label">Tipe Reminder</label><select id="reminder-repeat" class="form-select" onchange="toggleCustomDateFields()"><option value="daily">Harian</option><option value="weekdays">Senin - Jumat</option><option value="monday">Senin Saja</option><option value="friday">Jumat Saja</option><option value="monthly">Bulanan</option><option value="custom">Custom</option></select></div>
                     <div id="custom-date-fields" class="grid-2 hidden" style="margin-top: -10px; margin-bottom: 20px;">
                         <div class="form-group"><label class="form-label">Tanggal (1-31)</label><input type="number" id="reminder-day" class="form-input" min="1" max="31" value="1"></div>
@@ -3506,11 +3712,13 @@
                         <div class="form-group"><label class="form-label">K2: Batch Size</label><input type="number" id="reminder-batch" class="form-input" value="8" min="1" max="100" placeholder="Kosong = tanpa batch"></div>
                         <div class="form-group"><label class="form-label">K2: Delay Batch (detik)</label><input type="number" id="reminder-delay" class="form-input" value="45" min="0" step="0.5" placeholder="Kosong = tanpa delay batch"></div>
                     </div>
-                    <div class="form-group"><label class="form-label">Template Pesan</label><textarea id="reminder-template" class="form-textarea" rows="4" placeholder="Ketik pesan reminder..."></textarea></div>
+                    ${formulaGuideHtml('reminder')}
+                    <div class="form-group"><label class="form-label">Template Pesan</label><textarea id="reminder-template" class="form-textarea" rows="4" placeholder="Contoh: Yth. {x3}, reminder untuk {x4}. Nomor {x1}, grup {x2}. Variabel tersedia sampai {x20}."></textarea></div>
                     <button class="btn btn-primary" style="width: 100%; margin-top: 16px;" onclick="submitAddReminder()"><i class="fa-solid fa-save"></i> Simpan Reminder</button>
                 </div>
             </div>
         `;
+        renderGroupContactPreview('reminder-group', 'reminder-group-preview');
     }
 
     function toggleCustomDateFields() {
@@ -3893,5 +4101,5 @@
     function closeAllModals() { document.getElementById('modal-container').innerHTML = ''; }
 </script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
-</body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a0ef7e9b3c50244a',t:'MTc4MjAwODAxMg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
