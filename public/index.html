@@ -2283,6 +2283,20 @@
                         <i class="fa-solid fa-upload"></i> Upload Excel
                         <input type="file" accept=".xlsx,.xls" style="display: none;" onchange="uploadContactsExcel(event)">
                     </label>
+                    <select id="download-contact-group" class="form-select" style="max-width: 260px; min-width: 220px;" title="Pilih grup kontak yang akan didownload">
+                        <option value="">Semua Grup</option>
+                    </select>
+                    <button class="btn btn-success" onclick="downloadContactsExcel()">
+                        <i class="fa-solid fa-file-excel"></i> Download Data Kontak
+                    </button>
+                </div>
+
+                <div class="action-bar" style="align-items: center; margin-top: -8px;">
+                    <input type="text" id="contact-search" class="form-input" style="max-width: 520px;" placeholder="Cari kontak: nomor, grup, nama, x3, x4, dst..." oninput="renderContacts()">
+                    <button class="btn btn-outline" onclick="clearContactSearch()">
+                        <i class="fa-solid fa-xmark"></i> Reset Pencarian
+                    </button>
+                    <div id="contact-search-info" style="font-size: 13px; color: var(--text-tertiary); font-weight: 700;"></div>
                 </div>
 
                 <div class="card">
@@ -2293,8 +2307,8 @@
                     </div>
 
                     <div class="table-wrapper">
-                        <table class="data-table">
-                            <thead>
+                        <table class="data-table" id="contacts-data-table" style="min-width: 1800px;">
+                            <thead id="contacts-table-head">
                                 <tr>
                                     <th>x1 (Nomor WA)</th>
                                     <th>x2 (Grup)</th>
@@ -2305,7 +2319,7 @@
                             </thead>
                             <tbody id="contacts-table-body">
                                 <tr>
-                                    <td colspan="5" style="text-align: center; padding: 48px; color: var(--text-muted);">
+                                    <td colspan="21" style="text-align: center; padding: 48px; color: var(--text-muted);">
                                         Belum ada kontak. Upload file Excel atau upload dari Blast/Reminder.
                                     </td>
                                 </tr>
@@ -3210,18 +3224,78 @@
     }
 
     // ================== CONTACTS FUNCTIONS ==================
+    function updateContactExportGroupOptions() {
+        const select = document.getElementById('download-contact-group');
+        if (!select) return;
+        const currentValue = select.value;
+        const uniqueGroups = [...new Set(contacts.map(c => c.x2).filter(Boolean))];
+        const sourceGroups = groups.length ? [...new Set([...groups, ...uniqueGroups])] : uniqueGroups;
+        select.innerHTML = '<option value="">Semua Grup</option>' + sourceGroups.map(g => `<option value="${escapeHtml(g)}">${escapeHtml(g)}</option>`).join('');
+        if ([...select.options].some(opt => opt.value === currentValue)) select.value = currentValue;
+    }
+
+    function getContactSearchTerm() {
+        return (document.getElementById('contact-search')?.value || '').trim().toLowerCase();
+    }
+
+    function contactMatchesSearch(contact, term) {
+        if (!term) return true;
+        const searchableValues = [];
+
+        // Cari di semua kolom standar x1 sampai x20.
+        for (let i = 1; i <= 20; i++) searchableValues.push(contact?.[`x${i}`]);
+
+        // Cari juga di semua properti lain jika ada kolom tambahan dari Excel.
+        Object.keys(contact || {}).forEach(key => searchableValues.push(contact[key]));
+
+        return searchableValues.some(value =>
+            value !== null && value !== undefined && String(value).toLowerCase().includes(term)
+        );
+    }
+
+    function clearContactSearch() {
+        const input = document.getElementById('contact-search');
+        if (input) input.value = '';
+        renderContacts();
+    }
+
     function renderContacts() {
+        updateContactExportGroupOptions();
         const tbody = document.getElementById('contacts-table-body');
+        const thead = document.getElementById('contacts-table-head');
+        const table = document.getElementById('contacts-data-table');
+        const info = document.getElementById('contact-search-info');
+        const searchTerm = getContactSearchTerm();
+        const columns = Array.from({ length: 20 }, (_, i) => `x${i + 1}`);
+        const colspan = columns.length + 1;
+        const filteredContacts = contacts
+            .map((contact, index) => ({ contact, index }))
+            .filter(item => contactMatchesSearch(item.contact, searchTerm));
+
+        if (thead) {
+            thead.innerHTML = `<tr>${columns.map(col => `<th>${col}${col === 'x1' ? ' (Nomor WA)' : col === 'x2' ? ' (Grup)' : ''}</th>`).join('')}<th>Aksi</th></tr>`;
+        }
+        if (table) table.style.minWidth = `${Math.max(1800, columns.length * 115 + 100)}px`;
+
+        if (info) {
+            info.textContent = searchTerm
+                ? `Ditemukan ${filteredContacts.length} dari ${contacts.length} kontak — pencarian mencakup semua kolom x1 sampai x20`
+                : `Total ${contacts.length} kontak — tabel menampilkan x1 sampai x20`;
+        }
+
         if (contacts.length === 0) {
-            tbody.innerHTML = `<tr><td colspan="5" style="text-align: center; padding: 48px; color: var(--text-muted);">Belum ada kontak. Upload file Excel atau upload dari Blast/Reminder.</td></tr>`;
+            tbody.innerHTML = `<tr><td colspan="${colspan}" style="text-align: center; padding: 48px; color: var(--text-muted);">Belum ada kontak. Upload file Excel atau upload dari Blast/Reminder.</td></tr>`;
             return;
         }
-        tbody.innerHTML = contacts.map((c, index) => `
+
+        if (filteredContacts.length === 0) {
+            tbody.innerHTML = `<tr><td colspan="${colspan}" style="text-align: center; padding: 48px; color: var(--text-muted);">Tidak ada kontak yang cocok dengan pencarian "${escapeHtml(searchTerm)}".</td></tr>`;
+            return;
+        }
+
+        tbody.innerHTML = filteredContacts.map(({ contact: c, index }) => `
             <tr>
-                <td style="font-family: 'SF Mono', monospace; font-weight: 700; color: var(--accent);">${escapeHtml(c.x1 || '-')}</td>
-                <td style="font-weight: 600; color: var(--text-primary);">${escapeHtml(c.x2 || '-')}</td>
-                <td>${escapeHtml(c.x3 || '-')}</td>
-                <td>${escapeHtml(c.x4 || '-')}</td>
+                ${columns.map(col => `<td style="${col === 'x1' ? "font-family: 'SF Mono', monospace; font-weight: 700; color: var(--accent);" : col === 'x2' ? 'font-weight: 600; color: var(--text-primary);' : ''}" title="${escapeHtml(c[col] || '')}">${escapeHtml(c[col] || '-')}</td>`).join('')}
                 <td><button class="btn btn-danger btn-sm" onclick="deleteContact(${index})"><i class="fa-solid fa-trash"></i></button></td>
             </tr>
         `).join('');
@@ -3290,11 +3364,54 @@
     }
 
     function downloadContactTemplate() {
-        const ws = XLSX.utils.json_to_sheet([{ x1: '6281234567890', x2: 'Group 1', x3: 'Nama Kontak', x4: 'Keterangan' }]);
+        const sample = {};
+        for (let i = 1; i <= 20; i++) sample[`x${i}`] = '';
+        sample.x1 = '6281234567890';
+        sample.x2 = 'Group 1';
+        sample.x3 = 'Nama Kontak';
+        sample.x4 = 'Keterangan';
+        const ws = XLSX.utils.json_to_sheet([sample]);
         const wb = XLSX.utils.book_new();
         XLSX.utils.book_append_sheet(wb, ws, 'Template');
         XLSX.writeFile(wb, 'Template_Kontak_WABlaster.xlsx');
         showToast('Template berhasil didownload', 'success');
+    }
+
+    function safeFileName(value) {
+        return String(value || '').replace(/[^a-z0-9\-_]+/gi, '_').replace(/^_+|_+$/g, '') || 'Semua_Grup';
+    }
+
+    function downloadContactsExcel() {
+        const groupFilter = document.getElementById('download-contact-group')?.value || '';
+        const filteredContacts = groupFilter ? contacts.filter(c => (c.x2 || '') === groupFilter) : contacts;
+
+        if (filteredContacts.length === 0) {
+            showToast(groupFilter ? `Tidak ada kontak di grup "${groupFilter}"` : 'Belum ada kontak untuk didownload', 'error');
+            return;
+        }
+
+        const columns = Array.from({ length: 20 }, (_, i) => `x${i + 1}`);
+        filteredContacts.forEach(contact => {
+            Object.keys(contact || {}).forEach(key => {
+                if (/^x\d+$/i.test(key) && !columns.includes(key.toLowerCase())) columns.push(key.toLowerCase());
+            });
+        });
+        columns.sort((a, b) => parseInt(a.slice(1)) - parseInt(b.slice(1)));
+
+        const exportData = filteredContacts.map(contact => {
+            const row = {};
+            columns.forEach(col => row[col] = contact[col] || '');
+            return row;
+        });
+
+        const ws = XLSX.utils.json_to_sheet(exportData, { header: columns });
+        const wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, 'Kontak');
+
+        const date = new Date().toISOString().slice(0, 10);
+        const groupName = groupFilter ? safeFileName(groupFilter) : 'Semua_Grup';
+        XLSX.writeFile(wb, `Data_Kontak_${groupName}_${date}.xlsx`);
+        showToast(`Berhasil download ${filteredContacts.length} kontak${groupFilter ? ` dari grup ${groupFilter}` : ''}`, 'success');
     }
 
     // ================== GROUPS FUNCTIONS ==================
@@ -4100,6 +4217,6 @@
     function closeModal(event) { if (event.target.classList.contains('modal-overlay')) closeAllModals(); }
     function closeAllModals() { document.getElementById('modal-container').innerHTML = ''; }
 </script>
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a0ef7e9b3c50244a',t:'MTc4MjAwODAxMg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a10156810fe5aa09',t:'MTc4MjE5NTExMw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
 </html>
